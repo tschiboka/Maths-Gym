@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d5efc64c80.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/calculator-logo.png" type="image/x-icon">
+    <script src="index.js"></script>
+    <title>Math Basics | Practice</title>
+</head>
+<body onload="start()" class="dark">
+    <div class="main-wrapper">
+        <main>
+            <h1>Practice Basic Math Operations</h1>
+            <p id="problem"></p>
+            <div class="problem__btn-box">
+                <button autofocus id="generate-btn" onclick="generateProblem()"><i class="fa-solid fa-retweet"></i> Generate New</button>
+                <button id="show-btn" onclick="showSolution()"><i class="fa-regular fa-eye"></i> Show Solution</button>
+            </div>
+            <div id="detailed-solution">
+                <h1>Play Complete Solution Step by Step</h1>
+                <div id="calculation"></div>
+                <div class="problem__btn-box">
+                    <div>
+                        <div id="carousel-controls"></div>
+                    </div>
+                    <div>
+                        <button title="Start from the begining" onclick="goToStep(0)">
+                            <i class="fa-solid fa-backward-fast"></i>
+                        </button>
+                        <button title="Step Back" onclick="goToStep(-1)">
+                            <i class="fa-solid fa-backward-step"></i>
+                        </button>
+                        <button title="Close" onclick="closeDetailedSolution();">
+                            <i class="fa-solid fa-stop"></i>
+                        </button>
+                        <button id="next-step-btn" title="Next Step" onclick="goToStep(1)">
+                            <i class="fa-solid fa-forward-step"></i>
+                        </button>
+                        <button title="Step to the End" onclick="goToStep()">
+                            <i class="fa-solid fa-forward-fast"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <aside id="settings">
+            <div class="operations">
+                <label 
+                    for="addition-checkbox"
+                    id="addition-lbl" 
+                    class="checkbox-container" 
+                    title="Addition">
+                    <span>&plus;</span>
+                    <input 
+                        tabindex="1"
+                        id="addition-checkbox"
+                        type="checkbox"
+                        onchange="toggleOperationsCheckbox('addition')">
+                    <div class="checkmark"></div>
+                </label>
+                  
+                <label 
+                    id="subtraction-lbl" 
+                    class="checkbox-container" 
+                    title="Subtraction">
+                    <span>&minus;</span>
+                    <input 
+                        tabindex="2"
+                        id="subtraction-checkbox" 
+                        type="checkbox" 
+                        onchange="toggleOperationsCheckbox('subtraction')">
+                    <div class="checkmark"></div>
+                </label>
+                  
+                <label 
+                    id="multiplication-lbl" 
+                    class="checkbox-container"
+                    title="Multiplication">
+                    <span>&times;</span>
+                    <input
+                        tabindex="3" 
+                        id="multiplication-checkbox" 
+                        type="checkbox" 
+                        onchange="toggleOperationsCheckbox('multiplication')">
+                    <div class="checkmark"></div>
+                </label>
+                
+                <label 
+                    id="division-lbl"   
+                    class="checkbox-container"
+                    title="Division">
+                    <span>&divide;</span>
+                    <input 
+                        tabindex="4"
+                        id="division-checkbox" 
+                        type="checkbox" 
+                        onchange="toggleOperationsCheckbox('division')">
+                    <div class="checkmark"></div>
+                </label> 
+
+                <label 
+                    id="extend-lbl" 
+                    class="checkbox-container" 
+                    title="Extend for more options">
+                    <span>&vellip;</span>
+                    <input 
+                        tabindex="5"
+                        id="extend-checkbox" 
+                        type="checkbox" 
+                        onchange="toggleOperationsCheckbox('extend')">
+                    <div class="checkmark" class="toggle-btn"></div>
+                </label> 
+            </div>
+
+            <div id="settings__options">
+                <div>
+                    <button id="play" onclick="playCalculation()" title="Play Detailed Calculation">
+                        <i class="fa-solid fa-play"></i>
+                    </button>
+                    <span id="play-btn__explanation-txt">Play Detailed Calculation</span>
+                </div>
+
+                <div>
+                    <button id="multiplication-table-btn" title="Open Multiplication Table" onclick="openMultiplicationTable()">
+                        <i class="fa-solid fa-table-cells"></i>
+                    </button>
+                    <span>Open Multiplication Table</span>
+                </div>
+                
+                <div>
+                    <button id="timer-btn" title="Time Your Performance" onclick="">
+                        <i class="fa-regular fa-clock"></i>
+                    </button>
+                    <span>Time Performance</span>
+                </div>
+                <div>
+                    <button id="theme-btn" title="Toggle Dark and Light Theme" onclick="toggleTheme(true)">
+                        <i class="fa-regular fa-sun"></i>
+                    </button>
+                    <span id="theme-btn-label">Light Theme</span>
+                </div>
+            </div>
+        </aside>
+    </div>
+    
+    <footer></footer>
+
+    <!-- Add Keyboard events -->
+    <script>
+        const body_DOM = document.querySelector("body");
+        body_DOM.addEventListener("keydown", keyDown);
+    </script>
+</body>
+</html>
