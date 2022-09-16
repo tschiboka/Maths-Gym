@@ -372,6 +372,10 @@ aside #settings__options > div {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #111;
+}
+
+body.light #settings__options > div {
     border-bottom: 1px solid #c8c8c8;
 }
 
@@ -391,6 +395,10 @@ aside #settings__options button {
     font-size: 20px;
 }
 
+body.light aside #settings__options button:focus i {
+    background: transparent;
+}
+
 aside #settings__options button:hover {
     color: #aaa;
     border: 2px solid rgb(50, 80, 70);
@@ -401,6 +409,15 @@ aside #settings__options button:hover {
         20px 20px 20px inset rgba(0, 0, 0, 0.7),
         -10px -10px 10px inset rgba(255, 255, 255, 0.05);
     cursor: pointer;
+}
+
+body.light aside #settings__options button:hover {
+    color: #222;
+    box-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px white, 
+        20px 20px 20px inset rgba(0, 0, 0, 0.17), 
+        -10px -10px 20px inset white;
 }
 
 aside #settings__options span {
@@ -423,6 +440,10 @@ body.light aside #settings__options span {
 body.light .numberbox {
     background-color: rgba(0, 0, 0, 0.02);
     border-bottom: 2px solid #333;
+}
+
+.numberbox:last-child, body.light .numberbox:last-child  {
+    border-bottom: none;
 }
 
 h2.numberbox__title {
@@ -489,6 +510,7 @@ body.light .ranges-wrapper input, body.light .number-wrapper input {
     width: 40px;
     height: 40px;
     margin-right: auto;
+    padding: 0;
     border-radius: 7px;
     background-color: #aaa;
     box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.1), -5px -5px 10px black;
@@ -508,7 +530,14 @@ body.light .ranges-wrapper input, body.light .number-wrapper input {
     font-weight: bolder;
     border-radius: 5px;
     color: rgb(47, 177, 134);
-    transform: translate(-10px, 0px);
+}
+
+body.light .number-wrapper input[type=checkbox]:checked:after {
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    background: rgba(0, 0, 0, 0.01);
 }
 
 .number-wrapper input[type=checkbox]:disabled {
