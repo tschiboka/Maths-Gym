@@ -8,6 +8,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: "Valera";
+    user-select: none;
 }
 
 html {
@@ -87,11 +88,13 @@ input {
     margin-top: 0;
     margin-bottom: 20px;
     padding: 0.5em 1.2em;
+    width: 360px;
     height: 80px;
     font-size: 24px;
 }
 
 .problem__btn-box button#generate-btn:hover, .problem__btn-box button#show-btn:hover {
+    font-size: 23px;
     box-shadow: 
         15px 15px 30px rgba(0, 0, 0, 0.7), 
         -5px -5px 5px rgba(255, 255, 255, 0.05),
@@ -178,6 +181,7 @@ p#problem {
 p#problem span.text {
     color: #aaa;
     font-size: 80px;
+    cursor: default;
 }
 
 body.light p#problem span.text {
@@ -537,7 +541,8 @@ body.light .number-wrapper input[type=checkbox]:checked:after {
     min-height: 36px;
     max-width: 36px;
     max-height: 36px;
-    background: rgba(0, 0, 0, 0.01);
+    background: rgba(0, 0, 0, 0.1);
+    color: #555;
 }
 
 .number-wrapper input[type=checkbox]:disabled {
@@ -563,7 +568,7 @@ footer {
 }
 
 body.light footer {
-    background-color: rgba(0, 0, 0, 0.17);
+    background-color: #eee;
     border-top: 2px solid #333;
 }
 
@@ -579,6 +584,7 @@ body.light footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
 
@@ -593,6 +599,11 @@ body.light footer {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
+body.light #user-message {
+    background-color: #eee;
+    border: 2px solid #222;
+}
+
 h6#user-message__title {
     max-height: 70px;
     padding: 10px;
@@ -602,7 +613,15 @@ h6#user-message__title {
     font-size: 18px;
     color: #777;
     background-color: rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
     border-bottom: 1px solid #444;
+}
+
+body.light h6#user-message__title {
+    border-bottom: 2px solid #222;
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #222;
 }
 
 .user-message__origin {
@@ -614,6 +633,16 @@ button#user-message__close {
     margin: 5px;
     padding: 2px;
     width: 40px;
+    height: 40px;
+}
+
+body.light button#user-message__close:hover {
+    font-size: 22px;
+    box-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px white,
+        20px 20px 20px inset rgba(0, 0, 0, 0.17), 
+        -10px -10px 20px inset white;
 }
 
 div#user-message__body {
@@ -631,15 +660,32 @@ p#user-message__text {
     color: #ccc;
 }
 
+body.light p#user-message__text {
+    color: #222;
+}
+
 p#user-message__details {
     width: 80%;
     font-size: 18px;
     color: #777;
 }
 
+body.light p#user-message__details {
+    color: #444;
+}
+
 #user-message__ok {
+    width: 100px;
     padding: 0.5em 1.2em;
     margin: 20px 0;
+}
+
+body.light #user-message__ok:hover {
+    box-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px white,
+        20px 20px 20px inset rgba(0, 0, 0, 0.17), 
+        -10px -10px 20px inset white;
 }
 
 /* SOLUTION */
