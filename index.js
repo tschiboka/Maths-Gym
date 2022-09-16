@@ -273,7 +273,7 @@ function displayProblem(numbers, operand) {
 function displayUserMessage(headerText, messageText, helpText, origin = "") {
     const body = document.querySelector("body");
     const messageWrapper_DOM = createElement("div", "user-message-wrapper", "", body);
-    messageWrapper_DOM.addEventListener("click", removeMessage);
+    messageWrapper_DOM.addEventListener("click", removeUserMessage);
     const message_DOM = createElement("div", "user-message", "", messageWrapper_DOM);
 
     // User Message Header
@@ -286,7 +286,7 @@ function displayUserMessage(headerText, messageText, helpText, origin = "") {
     messageHeader_DOM.innerHTML = headerFullText;
     const messageCloseBtn_DOM = createElement("button", "user-message__close", "", messageHeader_DOM);
     messageCloseBtn_DOM.innerHTML = "<span>&times;</span>";
-    messageCloseBtn_DOM.addEventListener("click", removeMessage);
+    messageCloseBtn_DOM.addEventListener("click", removeUserMessage);
 
     // User Message Body
     const messageBody_DOM = createElement("div", "user-message__body", "", message_DOM);
@@ -304,15 +304,23 @@ function displayUserMessage(headerText, messageText, helpText, origin = "") {
     // Add OK Button that Closes the User Message
     const okButton__DOM = createElement("button", "user-message__ok", "", messageBody_DOM);
     okButton__DOM.innerHTML = "OK";
-    okButton__DOM.addEventListener("click", removeMessage);
+    okButton__DOM.addEventListener("click", removeUserMessage);
+
+    app.userMessageOpen = true;
+}
+
+function removeUserMessage() {
+    const body = document.querySelector("body");
+    const messageWrapper_DOM = document.getElementById("user-message-wrapper");
+    const messageCloseBtn_DOM = document.getElementById("user-message__close");
+    const okButton__DOM = document.getElementById("user-message__ok");
 
     // Remove Event Listeners from DOM Elements and Remove Message
-    function removeMessage() {
-        messageWrapper_DOM.removeEventListener("click", removeMessage);
-        messageCloseBtn_DOM.removeEventListener("click", removeMessage);
-        okButton__DOM.removeEventListener("click", removeMessage);
-        body.removeChild(messageWrapper_DOM);
-    }
+    messageWrapper_DOM.removeEventListener("click", removeUserMessage);
+    messageCloseBtn_DOM.removeEventListener("click", removeUserMessage);
+    okButton__DOM.removeEventListener("click", removeUserMessage);
+    body.removeChild(messageWrapper_DOM);
+    app.userMessageOpen = false;
 }
 
 function createElement(type, id, className, parent) {
@@ -383,7 +391,7 @@ function playCalculation() {
         }
     }
 
-    // Set Up App Varables
+    // Set Up App Variables
     app.playing = true;
     app.currentStep = 0;
     app.steps = [];
@@ -889,8 +897,13 @@ function keyDown(event) {
     const key = event.keyCode || event.key || event.charCode;
     const activeElement = document.activeElement;
     
-    if (key === "Escape" || key === 27 && app.settings.multiplicationTableOpen) {
+    if ((key === "Escape" || key === 27) && app.settings.multiplicationTableOpen) {
         closeMultiplicationTable();
+        return;
+    }
+
+    if ((key === "Escape" || key === 27) && app.userMessageOpen) {
+        removeUserMessage();
         return;
     }
 

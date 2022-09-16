@@ -399,8 +399,8 @@ aside #settings__options button {
     font-size: 20px;
 }
 
-body.light aside #settings__options button:focus i {
-    background: transparent;
+body.light aside #settings__options button:focus i, body.light button:focus i {
+    background: transparent !important;
 }
 
 aside #settings__options button:hover {
@@ -549,6 +549,10 @@ body.light .number-wrapper input[type=checkbox]:checked:after {
     background-color: #777;
 }
 
+body.light .number-wrapper input[type=checkbox]:disabled {
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
 .number-wrapper input[type=checkbox]:disabled:after {
     color: #444;
 }
@@ -556,6 +560,10 @@ body.light .number-wrapper input[type=checkbox]:checked:after {
 input:disabled {
     background: #777;
     box-shadow: -7px -7px 20px black, 10px 10px 10px inset #666, -2px -2px 0px inset black;
+}
+
+body.light input:disabled {
+    background: rgba(0, 0, 0, 0.1);
 }
 
 /*  FOOTER */
@@ -707,6 +715,10 @@ body.light #user-message__ok:hover {
     z-index: 100;
 }
 
+body.light #detailed-solution {
+    background-color: #eee;
+}
+
 #detailed-solution .problem__btn-box button {
     width: 60px;
     max-width: 60px;
@@ -740,7 +752,10 @@ body.light #user-message__ok:hover {
     text-align: center;
     font-size: 60px;
     color: #aaa;
+}
 
+body.light .cell {
+    color: #444;
 }
 
 .row span.text--separator {
@@ -752,11 +767,19 @@ body.light #user-message__ok:hover {
     margin-bottom: 20px;
 }
 
+body.light .row span.text--separator {
+    border-bottom: 3px solid #444;
+}
+
 .highlight {
     color:rgb(47, 177, 134);
 }
 
-.placeholder {
+body.light .highlight {
+    color: #009dab;
+}
+
+.placeholder, body.light .placeholder {
     color: transparent;
 }
 
@@ -779,12 +802,20 @@ body.light #user-message__ok:hover {
     color: rgb(47, 177, 134);
 }
 
+body.light .carry-digit {
+    color: #009dab;
+}
+
 .carry-digit--prev {
     min-width: 16px;
     height: 22px;
     font-size: 18px;
     text-align: center;
     color: #aaa;
+}
+
+body.light .carry-digit--prev {
+    color: #444;
 }
 
 .calculation__info {
@@ -805,6 +836,12 @@ body.light #user-message__ok:hover {
     font-size: 20px;
     color:#aaa;
     text-align: justify;
+}
+
+body.light .calculation__info {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: #444;
+    border: 2px solid #222;
 }
 
 #info__pagination {
@@ -828,13 +865,26 @@ body.light #user-message__ok:hover {
     color: #ccc;
 }
 
+body.light #info__pagination span:first-child {
+    color: #222;
+    font-weight: bold;
+}
+
 .calculation__info i {
     color: #777;
     font-size: 24px;
 }
 
+body.light .calculation__info i {
+    color: #222;
+}
+
 .calculation__info i.highlight {
     color: rgb(47, 177, 134);
+}
+
+body.light .calculation__info i.highlight {
+    color: #009dab;
 }
 
 .calculation__info span {
@@ -861,11 +911,19 @@ body.light #user-message__ok:hover {
     cursor: pointer;
 }
 
+body.light .page-indicator {
+    background-color: rgba(0, 0, 0, 0.1);
+    border: 2px solid #222;
+}
+
 .page-indicator.active {
     background-color: rgb(47, 177, 134);
     width: 28px
 }
 
+body.light .page-indicator.active {
+    background-color: #49dde9;
+}
 
 /* Multiplication Table */
 #multiplication-table-wrapper {
