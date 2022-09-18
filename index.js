@@ -189,6 +189,7 @@ function generateProblem() {
     // Focus Show Solution Button
     const showBtn_DOM = document.getElementById("show-btn");
     showBtn_DOM.focus();
+    return { valid: true };
 }
 
 // Get the Longest Number and Pad them to Accomodate the Same Space
@@ -307,6 +308,7 @@ function displayUserMessage(headerText, messageText, helpText, origin = "") {
     okButton__DOM.addEventListener("click", removeUserMessage);
 
     app.userMessageOpen = true;
+    return { valid: false };
 }
 
 function removeUserMessage() {
@@ -352,6 +354,10 @@ function playCalculation() {
         closeDetailedSolution();
         return;
     }
+
+    // Regenerate Problem to Find Any Validation Error
+    const valid = generateProblem().valid;
+    if (!valid) return; // User Message has been Shown, No Action Is Required
 
     // Set Buttons and State
     const playButton_DOM = document.getElementById("play");
