@@ -947,8 +947,11 @@ table#multiplication-table {
     text-shadow: 2px 2px black;
 }
 
-table#multiplication-table tbody {
-    border-radius: 7px;
+body.light table#multiplication-table {
+    background-color: #eee;
+    text-shadow: none;
+    border-color: #444;
+    color: #222;
 }
 
 table#multiplication-table tr td {
@@ -961,13 +964,22 @@ table#multiplication-table tr td {
     color: #555;
     font-weight: lighter;
     font-size: 22px;
-    cursor: crosshair;
+    cursor: none;
+}
+
+body.light table#multiplication-table tr td {
+    border-color: #444;
+    color: #444;
 }
 
 table#multiplication-table tr:first-child {
     background-color: #111012;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+}
+
+body.light table#multiplication-table tr:first-child {
+    background-color: #ccc;
 }
 
 table#multiplication-table tr:last-child {
@@ -992,13 +1004,25 @@ table#multiplication-table tr td:first-child {
     color: #ccc;   
 }
 
+body.light table#multiplication-table tr td:first-child {
+    background-color: #ccc;
+}
+
 table#multiplication-table tr:first-child td:first-child {
     color: #777;
     border-top-left-radius: 7px;
 }
 
+body.light table#multiplication-table tr:first-child td:first-child {
+    color: black;
+}
+
 table#multiplication-table tr:first-child td {
     color: #ccc;
+}
+
+body.light table#multiplication-table tr:first-child td {
+    color: black;
 }
 
 table#multiplication-table tr td.highlight-td {
@@ -1007,13 +1031,31 @@ table#multiplication-table tr td.highlight-td {
     font-size: 24px;
 }
 
-table#multiplication-table tr:first-child td.highlight-td, table#multiplication-table tr td.highlight-td:first-child {
+body.light table#multiplication-table tr td.highlight-td {
+    color: black;
+    background-color: #bbb;
+}
+
+table#multiplication-table tr:first-child td.highlight-td, 
+table#multiplication-table tr td.highlight-td:first-child {
     color: rgb(47, 177, 134)
+}
+
+body.light table#multiplication-table tr:first-child td.highlight-td, 
+body.light table#multiplication-table tr td.highlight-td:first-child {
+    color: black;
+    font-weight: bold;
 }
 
 table#multiplication-table tr td:hover {
     color: rgb(47, 177, 134);
     font-size: 30px;
+    transform: scale(1.3);
+    border-width: 3px;
+}
+
+body.light table#multiplication-table tr td:hover {
+    background-color: #999;
 }
 
 
