@@ -15,8 +15,6 @@ function resetCheckboxes() {
 }
 
 function createNumberBox(min, max, active = true) {
-    if (min >= Number.MAX_SAFE_INTEGER || max >= Number.MAX_SAFE_INTEGER) return alert ("The input number is greater than the maximum safe integer!");
-
     // Build a Number Box
     const settings_DOM = document.getElementById("settings");
     const numberBoxes = document.querySelectorAll(".numberbox");
@@ -55,7 +53,7 @@ function createNumberBox(min, max, active = true) {
 }
 
 function validateNumberBoxInput(input) {
-    const helpText = "Input values must be numbers!\nPositive and negative numbers are allowed, as well as decimal points.";
+    const helpText = "Input allowes only positive numbers or zero!\n";
 
     // Empty String
     if (input.length === 0) return { valid: false , errorType: "Empty Input Error",errorMessage: "Input cannot be left empty!", helpText };
@@ -65,7 +63,7 @@ function validateNumberBoxInput(input) {
 
     // Min Max Safe
     if (Number(input) > Number.MAX_SAFE_INTEGER) return { valid: false , errorType: "Input Safe Error",errorMessage: `The input is greater than the maximum safe number!`, helpText: `Input: \" ${ input } \"\nNumber: ${ Number.MAX_SAFE_INTEGER }` };
-    if (Number(input) < Number.MIN_SAFE_INTEGER) return { valid: false , errorType: "Input Safe Error",errorMessage: `The input is less than the minimum safe number!`, helpText: `Input: \" ${ input } \"\nNumber: ${ Number.MIN_SAFE_INTEGER }` };
+    if (Number(input) < 1 || !Number.isInteger(Number(input))) return { valid: false , errorType: "Invalid Input",errorMessage: `The input must be a positive integer!` };
 
     return { valid: true, number: Number(input) };
 }

@@ -22,8 +22,8 @@ const app = {
 
 function start() {
     resetCheckboxes();
-    createNumberBox(0, 1000);
-    createNumberBox(0, 1000);
+    createNumberBox(1, 1000);
+    createNumberBox(1, 1000);
     generateProblem();
 }
 

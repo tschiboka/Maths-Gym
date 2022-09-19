@@ -4,6 +4,7 @@ function playCalculation() {
         return;
     }
 
+    if (app.numbers[0] < 13 && app.numbers[1] < 13) return displayUserMessage("No Calculation", "This calculation does not require the use of Borrowing Method.", "You can find the time table cheat-sheet in the main menu.");
     // Regenerate Problem to Find Any Validation Error
     const valid = generateProblem().valid;
     if (!valid) return; // User Message has been Shown, No Action Is Required
