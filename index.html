@@ -154,10 +154,17 @@
     
     <footer></footer>
 
-    <!-- Add Keyboard events -->
+    <!-- Add Keyboard Events and Set Theme -->
     <script>
         const body_DOM = document.querySelector("body");
         body_DOM.addEventListener("keydown", keyDown);
+
+        const FREQ = 1000 * 60;
+        const themeTimer = setInterval(() => {
+            const hours = new Date().getHours();
+            const isLightTheme = hours > 6 && hours < 17;
+            toggleTheme(isLightTheme ? "light" : "dark");
+        }, FREQ);
     </script>
 </body>
 </html>

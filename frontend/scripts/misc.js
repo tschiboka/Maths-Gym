@@ -119,11 +119,20 @@ function closeMultiplicationTable() {
     app.settings.multiplicationTableOpen = false;
 }
 
-function toggleTheme() {
+function toggleTheme(theme) {
     // Toggle App State and Body Class
     const body_DOM = document.querySelector("body");
     const bodyClasses_ARR = [...body_DOM.classList].filter(cls => cls === "light" || cls === "dark");
-    app.settings.theme = app.settings.theme === "dark" ? app.settings.theme = "light" : app.settings.theme = "dark";
+    
+    // Set Theme
+    console.log(theme, app.settings.theme, theme && theme !== app.settings.theme)
+    if (theme) {
+        if (theme !== app.settings.theme) {
+            app.settings.theme = theme;
+            displayUserMessage("Acessibility: Theme Changed", `The application is set to ${ theme } theme.`, "This is an automatic feature that triggers at 5 PM and 7 AM. Themes can be set back in the main menu.");
+        } 
+    }
+    else app.settings.theme = app.settings.theme === "dark" ? app.settings.theme = "light" : app.settings.theme = "dark";    
     body_DOM.classList.replace(bodyClasses_ARR[0], app.settings.theme);
     
     // Adjust Icon, Text and Delete Theme Class

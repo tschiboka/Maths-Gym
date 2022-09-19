@@ -62,7 +62,7 @@ function validateNumberBoxInput(input) {
     if (isNaN(input)) return { valid: false , errorType: "Invalid Input",errorMessage: `The input value \" ${ input } \" is not a number!`, helpText };
 
     // Min Max Safe
-    if (Number(input) > Number.MAX_SAFE_INTEGER) return { valid: false , errorType: "Input Safe Error",errorMessage: `The input is greater than the maximum safe number!`, helpText: `Input: \" ${ input } \"\nNumber: ${ Number.MAX_SAFE_INTEGER }` };
+    if (Number(input) > 1000000) return { valid: false , errorType: "Input Safe Error",errorMessage: `The input is greater than the maximum safe number!`, helpText: `Input: \" ${ input } \"\nNumber: 1000000` };
     if (Number(input) < 1 || !Number.isInteger(Number(input))) return { valid: false , errorType: "Invalid Input",errorMessage: `The input must be a positive integer!` };
 
     return { valid: true, number: Number(input) };
