@@ -1,0 +1,411 @@
+aside#settings {
+    width: 30%;
+    height: 80vh;
+    border-left: 1px solid #444;
+}
+
+body.light aside#settings {
+    border-left: 2px solid #333;
+}
+
+aside > .operations {
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #444;
+    overflow-x: auto;
+}
+
+body.light aside > .operations {
+    border-bottom: 2px solid #333;;
+}
+
+/* Customize the label (the container) */
+label.checkbox-container {
+    position: relative;
+    display: block;
+    margin-top: 10px;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    color: white;
+    font-size: 30px;
+    border: 2px solid rgba(30, 28, 32);
+    border-radius: 7px;
+    box-shadow: 
+        5px 5px 5px rgba(0, 0, 0, 0.7), 
+        -5px -5px 5px rgba(255, 255, 255, 0.05),
+        20px 20px 20px inset rgba(0, 0, 0, 0.3),
+        -10px -10px 10px inset rgba(255, 255, 255, 0.02);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: pointer;
+}
+
+body.light label.checkbox-container {
+    color: #333;
+    border-radius: 15px;
+    box-shadow: 
+        5px 5px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px rgba(255, 255, 255, 1),
+        20px 20px 20px inset rgba(0, 0, 0, 0.1),
+        -10px -10px 20px inset white;        
+}
+
+label.checkbox-container:hover {
+    font-size: 26px;
+    border: 2px solid rgb(50, 80, 70);
+    box-shadow: 
+        5px 5px 5px rgba(0, 0, 0, 0.7), 
+        -5px -5px 5px rgba(255, 255, 255, 0.05),
+        20px 20px 20px inset rgba(0, 0, 0, 0.7),
+        -10px -10px 10px inset rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+body.light label.checkbox-container:hover {
+    color: #333;
+    font-size: 28px;
+    border-radius: 15px;
+    box-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px white,
+        20px 20px 20px inset rgba(0, 0, 0, 0.17),
+        -10px -10px 20px inset white;
+}
+
+label.checkbox-container span {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white; 
+}
+
+body.light label.checkbox-container span {
+    color: #333;
+}
+
+label.checkbox-container:hover span {
+    color: #999;
+}
+  
+  /* Hide the browser's default checkbox */
+label.checkbox-container input {
+    content: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+  
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: -28px;
+    left: 20px;
+    height: 14px;
+    width: 14px;
+    border: 2px solid rgb(50, 80, 70);
+    border-radius: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: 
+        -2px -2px 2px rgba(0, 0, 0, 0.7), 
+        5px 5px 5px rgba(255, 255, 255, 0.05);
+}
+
+body.light .checkmark {
+    border-color: #333;
+    background: rgba(0, 0, 0, 0.07);
+    box-shadow: 
+        -1px -1px 2px rgba(0, 0, 0, 0.3), 
+        5px 5px 5px white;
+}
+
+label.checkbox-container input:checked ~ .checkmark {
+    background-color: rgb(47, 177, 134);
+}
+
+body.light label.checkbox-container input:checked ~ .checkmark {
+    background-color: #49dde9;
+}
+
+aside {
+    overflow: auto;
+    max-height: 85vh;
+}
+
+aside #settings__options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+    border-bottom: 1px solid #444;
+}
+
+body.light aside #settings__options {
+    border-bottom: 2px solid #333;
+}
+
+aside #settings__options > div {
+    width: 100%;
+    max-width: 50vw;
+    padding: 7px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #111;
+}
+
+body.light #settings__options > div {
+    border-bottom: 1px solid #c8c8c8;
+}
+
+aside #settings__options > div:first-child {
+    padding-top: 12px;
+}
+
+aside #settings__options > div:last-child {
+    padding-bottom: 12px;
+    border-bottom: none;
+}
+
+aside #settings__options button {
+    margin: 0;
+    width: 60px;
+    height: 60px;
+    font-size: 20px;
+}
+
+body.light aside #settings__options button:focus i, body.light button:focus i {
+    background: transparent !important;
+}
+
+aside #settings__options button:hover {
+    color: #aaa;
+    border: 2px solid rgb(50, 80, 70);
+    font-size: 16px;
+    box-shadow: 
+        5px 5px 5px rgba(0, 0, 0, 0.7), 
+        -5px -5px 5px rgba(255, 255, 255, 0.05),
+        20px 20px 20px inset rgba(0, 0, 0, 0.7),
+        -10px -10px 10px inset rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
+body.light aside #settings__options button:hover {
+    color: #222;
+    box-shadow: 
+        1px 1px 5px rgba(0, 0, 0, 0.3), 
+        -10px -10px 20px white, 
+        20px 20px 20px inset rgba(0, 0, 0, 0.17), 
+        -10px -10px 20px inset white;
+}
+
+aside #settings__options span {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 18px;
+    color: #777;
+}
+  
+body.light aside #settings__options span {
+    color: #333;
+}
+
+.numberbox {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #444;
+}
+
+body.light .numberbox {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-bottom: 2px solid #333;
+}
+
+.numberbox:last-child, body.light .numberbox:last-child  {
+    border-bottom: none;
+}
+
+h2.numberbox__title {
+    height: 40px;
+    line-height: 40px;
+    font-weight: 100;
+    text-align: center;
+    font-size: 20px;
+    color: #ccc;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #444;
+}
+
+body.light h2.numberbox__title {
+    background-color: rgba(0, 0, 0, 0.09);
+    border-bottom: 2px solid #333;
+    color: #333;
+}
+
+.ranges-wrapper, .number-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ranges-wrapper > div, .number-wrapper > div {
+    padding: 10px 0;
+}
+
+.ranges-wrapper label, .number-wrapper label {
+    padding-right: 30px;
+    font-size: 20px;
+    color: #777;
+}
+
+body.light .ranges-wrapper label, body.light .number-wrapper label {
+    color: #333;
+}
+
+.ranges-wrapper input, .number-wrapper input {
+    height: 40px;
+    width: 170px;
+    padding: 0 20px;
+    background-color: #ccc;
+    border-width: 0;
+    border-radius: 20px;
+    color: black;
+    font-weight: bolder;
+    font-size: 20px;
+    box-shadow: 5px 5px 10px inset #666, -2px -2px 0px inset black;
+}
+
+body.light .ranges-wrapper input, body.light .number-wrapper input {
+    color: #333;
+    background-color: #eee;
+    border: 2px solid #333;
+    box-shadow: 5px 5px 10px inset rgba(0, 0, 0, 0.15), -2px -2px 4px inset white;
+}
+
+.number-wrapper input[type=checkbox] {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    margin-right: auto;
+    padding: 0;
+    border-radius: 7px;
+    background-color: #aaa;
+    box-shadow: 5px 5px 10px rgba(255, 255, 255, 0.1), -5px -5px 10px black;
+    outline: none;
+}
+
+.number-wrapper input[type=checkbox]:checked:after {
+    content: "\2713";
+    appearance: initial;
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #222;
+    font-size: 25px;
+    font-weight: bolder;
+    border-radius: 5px;
+    color: rgb(47, 177, 134);
+}
+
+body.light .number-wrapper input[type=checkbox]:checked:after {
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    background: rgba(0, 0, 0, 0.1);
+    color: #555;
+}
+
+.number-wrapper input[type=checkbox]:disabled {
+    background-color: #777;
+}
+
+body.light .number-wrapper input[type=checkbox]:disabled {
+    background-color: rgba(0, 0, 0, 0.01);
+}
+
+.number-wrapper input[type=checkbox]:disabled:after {
+    color: #444;
+}
+
+input:disabled {
+    background: #777;
+    box-shadow: -7px -7px 20px black, 10px 10px 10px inset #666, -2px -2px 0px inset black;
+}
+
+body.light input:disabled {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* Tablet Landscape */
+@media all and (max-width: 1450px), (max-device-width: 1450px)  {
+    body {
+        max-width: 100vw;
+    }
+    .main-wrapper {
+        flex-direction: column;
+        max-width: 100vw;
+    }
+
+    main {
+        width: 100vw;
+        max-width: 100vw;
+        height: 85vh;        
+    }
+    
+    aside#settings {
+        width: 100vw;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-left: none;
+    }
+    
+    aside > .operations {
+        height: 15vh;
+        width: 100vw;
+        padding: 40px 0 20px 0;
+        justify-content: center;
+        align-items: center;
+        border-top: 1px solid #444;
+        border-bottom: 1px solid #444;
+    }
+
+    label.checkbox-container {
+        margin: 0 20px;
+    }
+
+    aside #settings__options {
+        min-width: 100vw;
+    }
+
+    .numberbox{
+        width: 50vw;
+        justify-content: center;
+        border: 1px solid #444;
+        margin: 20px 0;
+    }
+}
+
+
+/* Mobile Portrait and Landscape */
+@media (max-device-width: 1280px), (max-width: 1280px) {
+    .numberbox {
+        width: 90vw;
+    }
+}
