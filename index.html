@@ -108,15 +108,15 @@
                 </label> 
 
                 <label 
-                    id="extend-lbl" 
+                    id="expand-lbl" 
                     class="checkbox-container" 
-                    title="Extend for more options">
+                    title="Expand for more options">
                     <span>&vellip;</span>
                     <input 
                         tabindex="5"
-                        id="extend-checkbox" 
+                        id="expand-checkbox" 
                         type="checkbox" 
-                        onchange="toggleOperationsCheckbox('extend')">
+                        onchange="toggleOperationsCheckbox('expand')">
                     <div class="checkmark" class="toggle-btn"></div>
                 </label> 
             </div>
@@ -143,7 +143,7 @@
                     <span>Time Performance</span>
                 </div>
                 <div>
-                    <button id="theme-btn" title="Toggle Dark and Light Theme" onclick="toggleTheme(true)">
+                    <button id="theme-btn" title="Toggle Dark and Light Theme" onclick="toggleTheme()">
                         <i class="fa-regular fa-sun"></i>
                     </button>
                     <span id="theme-btn-label">Light Theme</span>
@@ -159,6 +159,7 @@
         const body_DOM = document.querySelector("body");
         body_DOM.addEventListener("keydown", keyDown);
 
+        toggleTheme(app.settings.theme);
         const FREQ = 1000 * 60;
         const themeTimer = setInterval(() => {
             const hours = new Date().getHours();

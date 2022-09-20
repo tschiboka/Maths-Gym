@@ -2,8 +2,13 @@ function resetCheckboxes() {
     const checkboxes_DOM = [...document.querySelectorAll("input[type = 'checkbox']")];
     checkboxes_DOM.forEach(checkbox => {
         const id = checkbox.id;
-        const [prop, isCheckbox] = id.split("-");
-        if (prop === "multiplication" || prop === "extend") {
+        const [prop, _] = id.split("-");
+        if (prop === "expand") {
+            checkbox.checked = false;
+            const expandedMenu_DOM = document.getElementById("settings__options");
+            expandedMenu_DOM.style.display = "none";
+        } 
+        else if (prop === "addition") {
             app.operations[prop] = true;
             checkbox.checked = true;
         } 
@@ -71,7 +76,7 @@ function validateNumberBoxInput(input) {
 function generateProblem() {
     // Get Ranges
     const numberBoxes = document.querySelectorAll(".numberbox").length;
-    const getRandom = (min, max) => min + Math.floor(Math.random() * (max - min));
+    const getRandom = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
     app.numbers = [];
     
     for (let i = 1; i <= numberBoxes; i++) {
@@ -105,7 +110,7 @@ function generateProblem() {
     
             // Check if Min and Max Numbers Constitutes a Valid Range
             const [ min, max ] = [ minValidation_OBJ.number, maxValidation_OBJ.number ];
-            if (min >= max) return displayUserMessage("Invalid Range", "The maximum input is less than the minimum!", `Cannot create range: [ ${ min } ... ${ max } ]`, `Number Box - ${ i }`);
+            if (min > max) return displayUserMessage("Invalid Range", "The maximum input is less than the minimum!", `Cannot create range: [ ${ min } ... ${ max } ]`, `Number Box - ${ i }`);
     
             app.numbers.push(getRandom(min, max));    
         }
@@ -114,7 +119,9 @@ function generateProblem() {
     // Get the Operations Selected by User
     const checkedOperations = [];
     for ([key, value] of Object.entries(app.operations)) 
-        if (value && key!== "extend") checkedOperations.push(key);
+        if (value && key!== "expand") checkedOperations.push(key);
+
+        console.log(checkedOperations);
     
     // If No Operation is Selected, Set Default Addition
     if (!checkedOperations.length) {

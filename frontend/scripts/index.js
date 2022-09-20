@@ -1,7 +1,7 @@
 const app = {
     solution: 0,
     numbers: [],
-    currentOperation: "multiplication",
+    currentOperation: "addition",
     steps: [],
     currentStep: 0,
     time: 0,
@@ -10,12 +10,12 @@ const app = {
         subtraction: false,
         multiplication: false,
         division: false,
-        extend: true
+        expand: false
     },
     settings: {
-        expanded: true,
+        expanded: false,
         multiplicationTableOpen: false,
-        theme: "dark"
+        theme: setInitialTheme()
     },
     playing: false,
 }
@@ -32,4 +32,10 @@ function createElement(type, id, className, parent) {
     if (id) elem.id = id;
     if (className) elem.classList.add(className);
     return parent.appendChild(elem);
+}
+
+function setInitialTheme() {
+    const hours = new Date().getHours();
+    const isLightTheme = hours > 6 && hours < 17;
+    return isLightTheme ? "light" : "dark";
 }

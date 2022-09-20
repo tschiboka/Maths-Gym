@@ -59,12 +59,12 @@ function toggleOperationsCheckbox(checkboxType) {
 
     checkbox_DOM.focus();
 
-    // Hide / Show Extended Menu
-    if (checkboxType === "extend") {
-        const extendButton_DOM = document.getElementById("extend-checkbox");
-        const checked = extendButton_DOM.checked;
-        const extendedNemu_DOM = document.getElementById("settings__options");
-        extendedNemu_DOM.style.display = checked ? "flex" : "none";
+    // Hide / Show Expanded Menu
+    if (checkboxType === "expand") {
+        const expandButton_DOM = document.getElementById("expand-checkbox");
+        const checked = expandButton_DOM.checked;
+        const expandedNemu_DOM = document.getElementById("settings__options");
+        expandedNemu_DOM.style.display = checked ? "flex" : "none";
     }
 }
 
@@ -129,7 +129,7 @@ function toggleTheme(theme) {
     if (theme) {
         if (theme !== app.settings.theme) {
             app.settings.theme = theme;
-            displayUserMessage("Acessibility: Theme Changed", `The application is set to ${ theme } theme.`, "This is an automatic feature that triggers at 5 PM and 7 AM. Themes can be set back in the main menu.");
+            displayUserMessage("Acessibility: Theme Changed", `The application is set to ${ theme } theme.`, "This is an automatic feature that triggers at 7 AM and 5 PM. Themes can be set back in the main menu.");
         } 
     }
     else app.settings.theme = app.settings.theme === "dark" ? app.settings.theme = "light" : app.settings.theme = "dark";    
