@@ -22,8 +22,11 @@ const app = {
 
 function start() {
     resetCheckboxes();
+
+    // Set Main Menu Numbers
     createNumberBox(1, 1000);
     createNumberBox(1, 1000);
+
     generateProblem();
 }
 
