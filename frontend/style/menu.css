@@ -2,6 +2,8 @@ aside#settings {
     width: 30%;
     height: 80vh;
     border-left: 1px solid #444;
+    overflow: auto;
+    max-height: 85vh;
 }
 
 body.light aside#settings {
@@ -14,6 +16,8 @@ aside > .operations {
     justify-content: space-between;
     border-bottom: 1px solid #444;
     overflow-x: auto;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 -5px 5px rgba(255, 255, 255, 0.05), 0 7px 7px rgba(0, 0, 0, 0.5); 
 }
 
 body.light aside > .operations {
@@ -136,18 +140,17 @@ body.light label.checkbox-container input:checked ~ .checkmark {
     background-color: #49dde9;
 }
 
-aside {
-    overflow: auto;
-    max-height: 85vh;
-}
+/* SETTING OPTIONS */
 
 aside #settings__options {
+    min-width: 100%;
+    padding: 10px 0 0 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-width: 100%;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 7px 7px rgba(0, 0, 0, 0.5); 
 }
 
 body.light aside #settings__options {
@@ -222,8 +225,11 @@ body.light aside #settings__options span {
 
 .numberbox {
     width: 100%;
+    margin: 30px 0;
     background-color: rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #444;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    box-shadow: 0 -7px 7px rgba(255, 255, 255, 0.05), 0 7px 7px rgba(0, 0, 0, 0.5); 
 }
 
 body.light .numberbox {
@@ -243,7 +249,7 @@ h2.numberbox__title {
     font-size: 20px;
     color: #ccc;
     background-color: rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #333;
 }
 
 body.light h2.numberbox__title {

@@ -48,12 +48,30 @@ function createNumberBox(min, max, active = true) {
     numberCheckbox_DOM.type = "checkbox";
     numberInput_DOM.disabled = "disabled";
 
+    // Default Titles
+    const rangeNumber = numberBoxId.match(/\d+/)[0];
+    minInput_DOM.title = `Set Minimum for Range ${ rangeNumber } (Inclusive)`;
+    maxInput_DOM.title = `Set Maximum for Range ${ rangeNumber } (Inclusive)`;
+
+    const defaultTitle = `Select Checkbox to Enable Fixed Numbers`;
+    numberInput_DOM.title = defaultTitle;
+    numberCheckbox_DOM.title = defaultTitle;
+
     // Add Event Listeners
     numberCheckbox_DOM.addEventListener("click", () => {
-        const checked = numberCheckbox_DOM.checked;
-        numberInput_DOM.disabled = !checked;
-        minInput_DOM.disabled = checked;
-        maxInput_DOM.disabled = checked;
+        // Toggle Number Box Inputs Disabled
+        const enabled = numberCheckbox_DOM.checked;
+        numberInput_DOM.disabled = !enabled;
+        minInput_DOM.disabled = enabled;
+        maxInput_DOM.disabled = enabled;
+
+        // Reset Titles
+        minInput_DOM.title = enabled ? "Number Range is Disabled" : `Set Minimum for Range ${ rangeNumber } (Inclusive)`;
+        maxInput_DOM.title = enabled ? "Number Range is Disabled" : `Set Maximum for Range ${ rangeNumber } (Inclusive)`;
+        
+        const newTitle = `${ enabled ? "Deselect" : "Select" } Checkbox to ${ enabled ? "Disable" : "Enable"} Fixed Numbers`;
+        numberInput_DOM.title = newTitle;
+        numberCheckbox_DOM.title = newTitle;
     });
 }
 
