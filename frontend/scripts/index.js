@@ -18,6 +18,10 @@ const app = {
         theme: setInitialTheme(),
         automaticThemeToggle: true,
     },
+    numberBoxes: [
+        { min: 1, max: 1000, fixed: false },
+        { min: 1, max: 1000, fixed: false },
+    ],
     playing: false,
 }
 
@@ -25,11 +29,9 @@ function start() {
     resetCheckboxes();
 
     // Set Main Menu Numbers and Add Remove Buttons
-    createNumberBox(1, 1000);
-    createNumberBox(1, 1000);
-    createAddAndRemoveButtons();
-
+    refreshNumberBoxes();
     generateProblem();
+    createAddAndRemoveButtons();
 }
 
 function createElement(type, id, className, parent) {

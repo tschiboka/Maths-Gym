@@ -125,7 +125,6 @@ function toggleTheme(theme) {
     const bodyClasses_ARR = [...body_DOM.classList].filter(cls => cls === "light" || cls === "dark");
     
     // Set Theme
-    console.log(theme, app.settings.theme, theme && theme !== app.settings.theme)
     if (theme) {
         if (theme !== app.settings.theme) {
             app.settings.theme = theme;

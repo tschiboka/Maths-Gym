@@ -19,12 +19,11 @@ function resetCheckboxes() {
     });
 }
 
-function createNumberBox(min, max, active = true) {
+function createNumberBox(id, min, max, fixed) {
     // Build a Number Box
-    const settings_DOM = document.getElementById("settings");
-    const numberBoxes = document.querySelectorAll(".numberbox");
-    const numberBoxId = "numberbox_" + (numberBoxes.length + 1); 
-    const numberBox_DOM = createElement("div", numberBoxId, "numberbox", settings_DOM);
+    const numberBoxes_DOM = document.getElementById("numberboxes");
+    const numberBoxId = "numberbox_" + (id + 1); 
+    const numberBox_DOM = createElement("div", numberBoxId, "numberbox", numberBoxes_DOM);
     const numberBoxTitle_DOM = createElement("h2", "", "numberbox__title", numberBox_DOM);
     const ranges_DOM = createElement("div", "", "ranges-wrapper", numberBox_DOM);
     const ranges1_DOM = createElement("div", "", "ranges-1", ranges_DOM);
@@ -39,7 +38,7 @@ function createNumberBox(min, max, active = true) {
     const numberInput_DOM = createElement("input", numberBoxId + "__input--number", "", numberWrapper_DOM);
 
     // Set Properties
-    numberBoxTitle_DOM.innerHTML = "Number " + (numberBoxes.length + 1);
+    numberBoxTitle_DOM.innerHTML = "Number " + (id + 1);
     minLabel_DOM.innerHTML = "Min:";
     maxLabel_DOM.innerHTML = "Max:";
     minInput_DOM.value = min;
@@ -75,6 +74,20 @@ function createNumberBox(min, max, active = true) {
     });
 }
 
+function refreshNumberBoxes() {
+    // Delete NumberBoxes
+    const numberBoxes_DOM = document.getElementById("numberboxes");
+    numberBoxes_DOM.innerHTML = "";
+
+    // Iterate NumberBoxes
+    let i = 0;
+    for (let numberbox of app.numberBoxes) {
+        const { min, max, fixed } = { ...app.numberBoxes[i] };
+        createNumberBox(i, min, max, fixed); 
+        i++;
+    }
+}
+
 function createAddAndRemoveButtons() {
     const settings_DOM = document.getElementById("settings");
     const settingsButtonBox_DOM = createElement("div", "settings__button-box", "", settings_DOM);
@@ -97,6 +110,47 @@ function createAddAndRemoveButtons() {
         addNumberButton_DOM.title = "Disabled: Reached Maximum Limit of Number Boxes";
     }
 
+    // Add EventListeners
+    addNumberButton_DOM.addEventListener("click", handleAddNumberBoxClick);
+    removeNumberButton_DOM.addEventListener("click", handleRemoveNumberBoxClick);
+}
+
+function handleAddNumberBoxClick() {
+    const addNumberButton_DOM = document.getElementById("add-new-number-btn");
+    const removeNumberButton_DOM = document.getElementById("remove-new-number-btn");
+
+    if (app.numberBoxes.length >= 5) {
+        // Display Error Message and Disallow Add
+        addNumberButton_DOM.disabled = true;
+        addNumberButton_DOM.title = "Disabled: Reached Maximum Limit of Number Boxes";
+        displayUserMessage("Number Box Error", "The maximum number boxes that can be created is 5!");
+    }
+    else {
+        // Allow Remove, Push New Numberbox and Refresh 
+        removeNumberButton_DOM.disabled = false;
+        removeNumberButton_DOM.title = "Remove Last Number Box";
+        app.numberBoxes.push({ min: 1, max: 1000, fixed: false });
+        refreshNumberBoxes();
+    }
+}
+
+function handleRemoveNumberBoxClick() {
+    const addNumberButton_DOM = document.getElementById("add-new-number-btn");
+    const removeNumberButton_DOM = document.getElementById("remove-new-number-btn");
+
+    if (app.numberBoxes.length <= 2) {
+        // Display Error Message and Disallow Remove
+        removeNumberButton_DOM.title = "Disabled: There Must be at Least 2 Number Boxes";
+        removeNumberButton_DOM.disabled = true;
+        displayUserMessage("Number Box Error", "The application cannot safely work with less than 2 number boxes!");
+    }
+    else {
+        // Allow Add, Pop Last Numberbox and Refresh 
+        addNumberButton_DOM.title = "Add a New Number Box";
+        addNumberButton_DOM.disabled = false;
+        app.numberBoxes.pop();
+        refreshNumberBoxes();
+    }
 }
 
 function validateNumberBoxInput(input) {
@@ -163,8 +217,6 @@ function generateProblem() {
     for ([key, value] of Object.entries(app.operations)) 
         if (value && key!== "expand") checkedOperations.push(key);
 
-        console.log(checkedOperations);
-    
     // If No Operation is Selected, Set Default Addition
     if (!checkedOperations.length) {
         const additionCheckbox_DOM = document.getElementById("addition-checkbox");

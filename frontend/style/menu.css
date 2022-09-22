@@ -399,6 +399,10 @@ button#add-new-number-btn:disabled, button#remove-new-number-btn:disabled {
     cursor: not-allowed;    
 }
 
+body.light button#add-new-number-btn:disabled, body.light button#remove-new-number-btn:disabled {
+    color: #666;
+}
+
 button#add-new-number-btn i, button#remove-new-number-btn i {
     margin-right: 10px;
 }
