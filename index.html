@@ -143,7 +143,7 @@
                     <span>Time Performance</span>
                 </div>
                 <div>
-                    <button id="theme-btn" title="Toggle Dark and Light Theme" onclick="toggleTheme()">
+                    <button id="theme-btn" title="Toggle Dark and Light Theme" onclick="app.settings.automaticThemeToggle = false; toggleTheme()">
                         <i class="fa-regular fa-sun"></i>
                     </button>
                     <span id="theme-btn-label">Light Theme</span>
@@ -162,9 +162,11 @@
         toggleTheme(app.settings.theme);
         const FREQ = 1000 * 60;
         const themeTimer = setInterval(() => {
-            const hours = new Date().getHours();
-            const isLightTheme = hours > 6 && hours < 17;
-            toggleTheme(isLightTheme ? "light" : "dark");
+            if (app.settings.automaticThemeToggle) {
+                const hours = new Date().getHours();
+                const isLightTheme = hours > 6 && hours < 17;
+                toggleTheme(isLightTheme ? "light" : "dark");
+            }
         }, FREQ);
     </script>
 </body>

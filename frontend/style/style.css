@@ -1,3 +1,24 @@
+*::-webkit-scrollbar{
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    border-radius: 5px;
+    box-shadow: -2px -2px 3px black;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: rgb(47, 177, 134);
+    border-radius: 5px;
+    box-shadow: 2px 2px 3px inset rgba(255, 255, 255, 0.2), -2px -2px 2px inset rgba(0, 0, 0, 0.4);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(47, 177, 134) rgba(0, 0, 0, 0.4);
+    scroll-behavior: smooth;
+}
+
 /*  FOOTER */
 
 footer {
@@ -11,7 +32,6 @@ body.light footer {
     background-color: #eee;
     border-top: 2px solid #333;
 }
-
 
 /* USER MESSAGE */
 

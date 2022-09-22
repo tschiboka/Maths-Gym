@@ -15,7 +15,8 @@ const app = {
     settings: {
         expanded: false,
         multiplicationTableOpen: false,
-        theme: setInitialTheme()
+        theme: setInitialTheme(),
+        automaticThemeToggle: true,
     },
     playing: false,
 }
@@ -23,9 +24,10 @@ const app = {
 function start() {
     resetCheckboxes();
 
-    // Set Main Menu Numbers
+    // Set Main Menu Numbers and Add Remove Buttons
     createNumberBox(1, 1000);
     createNumberBox(1, 1000);
+    createAddAndRemoveButtons();
 
     generateProblem();
 }

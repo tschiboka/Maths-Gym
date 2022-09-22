@@ -75,6 +75,30 @@ function createNumberBox(min, max, active = true) {
     });
 }
 
+function createAddAndRemoveButtons() {
+    const settings_DOM = document.getElementById("settings");
+    const settingsButtonBox_DOM = createElement("div", "settings__button-box", "", settings_DOM);
+    const addNumberButton_DOM = createElement("button", "add-new-number-btn", "", settingsButtonBox_DOM);
+    const removeNumberButton_DOM = createElement("button", "remove-new-number-btn", "", settingsButtonBox_DOM);
+    
+    // Add Button Icon, Text and Title
+    addNumberButton_DOM.innerHTML = '<i class="fa-regular fa-square-plus"></i> Add';
+    removeNumberButton_DOM.innerHTML = '<i class="fa-solid fa-trash"></i> Remove';
+    addNumberButton_DOM.title = "Add a New Number Box";
+    removeNumberButton_DOM.title = "Remove Last Number Box";
+    
+    // Set Button Appearance According to the Number of Boxes
+    if (app.numbers.length <= 2) {
+        removeNumberButton_DOM.disabled = true;
+        removeNumberButton_DOM.title = "Disabled: There Must be at Least 2 Number Boxes";
+    }
+    else if (app.numbers.length > 4) {
+        addNumberButton_DOM.disabled = true;
+        addNumberButton_DOM.title = "Disabled: Reached Maximum Limit of Number Boxes";
+    }
+
+}
+
 function validateNumberBoxInput(input) {
     const helpText = "Input allowes only positive numbers or zero!\n";
 

@@ -371,6 +371,38 @@ body.light input:disabled {
     background: rgba(0, 0, 0, 0.1);
 }
 
+#settings__button-box {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button#add-new-number-btn, button#remove-new-number-btn {
+    width: 140px;
+    padding: 10px 10px;
+    margin: 0 20px 20px 20px;
+    font-size: 18px;
+}
+
+button#add-new-number-btn:hover, button#remove-new-number-btn:hover {
+    color: #aaa;
+    font-size: 17px;
+}
+
+body.light button#add-new-number-btn:hover, body.light button#remove-new-number-btn:hover {
+    color: #333;
+}
+
+button#add-new-number-btn:disabled, button#remove-new-number-btn:disabled {
+    color: #555;
+    cursor: not-allowed;    
+}
+
+button#add-new-number-btn i, button#remove-new-number-btn i {
+    margin-right: 10px;
+}
+
 /* Tablet Landscape */
 @media all and (max-width: 1450px), (max-device-width: 1450px)  {
     body {
