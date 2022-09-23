@@ -169,7 +169,36 @@ function validateNumberBoxInput(input) {
     return { valid: true, number: Number(input) };
 }
 
+// Check if Problem Generation is Possible
+function validateProblem(operation) {
+    switch (operation) {
+        case "multiplication": {
+            if (app.numberBoxes.length > 2) return { valid: false, header: "Display Error", message: "Cannot display multiplications with more than two factors", helperText: "Please remove one or more number boxes." };
+        }
+    }
+
+    return ({ valid: true });
+}
+
 function generateProblem() {
+    // Get the Operations Selected by User
+    const checkedOperations = [];
+    for ([key, value] of Object.entries(app.operations)) 
+        if (value && key!== "expand") checkedOperations.push(key);
+    const randomOperation = checkedOperations[Math.floor(Math.random() * checkedOperations.length)];
+    
+    // If No Operation is Selected, Set Default Addition
+    if (!checkedOperations.length) {
+        const additionCheckbox_DOM = document.getElementById("addition-checkbox");
+        additionCheckbox_DOM.checked = true;
+        app.operations.addition = true;
+        checkedOperations.push("addition");
+    }
+
+    // Check If Problem is Valid
+    const { valid, header, message, helperText } = { ...validateProblem(randomOperation) };
+    if (!valid) return displayUserMessage(header, message, helperText)
+    
     // Get Ranges
     const numberBoxes = document.querySelectorAll(".numberbox").length;
     const getRandom = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
@@ -211,22 +240,8 @@ function generateProblem() {
             app.numbers.push(getRandom(min, max));    
         }
     }
-
-    // Get the Operations Selected by User
-    const checkedOperations = [];
-    for ([key, value] of Object.entries(app.operations)) 
-        if (value && key!== "expand") checkedOperations.push(key);
-
-    // If No Operation is Selected, Set Default Addition
-    if (!checkedOperations.length) {
-        const additionCheckbox_DOM = document.getElementById("addition-checkbox");
-        additionCheckbox_DOM.checked = true;
-        app.operations.addition = true;
-        checkedOperations.push("addition");
-    }
     
-    // Set Operation Randomly
-    const randomOperation = checkedOperations[Math.floor(Math.random() * checkedOperations.length)];
+    // Set Operation
     let operand = "";
     switch (randomOperation) {
         case "addition": {

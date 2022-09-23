@@ -4,7 +4,9 @@ function playCalculation() {
         return;
     }
 
+    if (app.numbers.length > 2) return displayUserMessage("Number Box Ignored", "You cannot play multiplications with more than 2 numbers!", "Only the first two number box will be included in this operation.")
     if (app.numbers[0] < 13 && app.numbers[1] < 13) return displayUserMessage("No Calculation", "This calculation does not require the use of Borrowing Method.", "You can find the time table cheat-sheet in the main menu.");
+
     // Regenerate Problem to Find Any Validation Error
     const valid = generateProblem().valid;
     if (!valid) return; // User Message has been Shown, No Action Is Required
@@ -34,6 +36,7 @@ function playCalculation() {
 
     switch (app.currentOperation) {
         case "multiplication": {
+            // Restrictions
             const numbers_STR = app.numbers.map(n => n.toString());
             // Width is the solution or the last number + operand
             width = Math.max(app.solution.toString().length, numbers_STR[1].length + 1);
