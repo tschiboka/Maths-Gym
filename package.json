@@ -1,0 +1,25 @@
+{
+  "name": "maths-gym",
+  "version": "1.0.0",
+  "description": "Learning App",
+  "main": "index.js",
+  "dependencies": {
+    "typescript": "^4.8.3"
+  },
+  "devDependencies": {
+    "jest": "^29.0.3"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tschiboka/Maths-Gym.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tschiboka/Maths-Gym/issues"
+  },
+  "homepage": "https://github.com/tschiboka/Maths-Gym#readme"
+}

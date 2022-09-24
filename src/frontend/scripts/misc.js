@@ -128,7 +128,7 @@ function toggleTheme(theme) {
     if (theme) {
         if (theme !== app.settings.theme) {
             app.settings.theme = theme;
-            displayUserMessage("Acessibility: Theme Changed", `The application is set to ${ theme } theme.`, "This is an automatic feature that triggers at 7 AM and 5 PM. Themes can be set back in the main menu.");
+            displayUserMessage("Accessibility: Theme Changed", `The application is set to ${ theme } theme.`, "This is an automatic feature that triggers at 7 AM and 5 PM. Themes can be set back in the main menu.");
         } 
     }
     else app.settings.theme = app.settings.theme === "dark" ? app.settings.theme = "light" : app.settings.theme = "dark";    
